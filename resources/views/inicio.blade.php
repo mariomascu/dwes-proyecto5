@@ -1,4 +1,4 @@
-@include('partials.header') <!--carga de la cabecera ruteada-->
+@include('layouts.header') <!--carga de la cabecera ruteada-->
 
 <!-- Contenido principal -->
 <div class="container mt-5">
@@ -23,7 +23,8 @@
 
         @foreach ($juegos as $juego)
             <div class="col-md-4 mb-4">
-                <div class="card game-card" style="background-image: url('{{ asset('img/' . str_replace(' ', '-', $juego['nombre']) . '.webp') }}');">
+                <div class="card game-card"
+                     style="background-image: url('{{ asset('img/' . str_replace(' ', '-', $juego['nombre']) . '.webp') }}');">
                     <div class="card-body text-center">
                         <h5 class="card-title game-title">{{ $juego['nombre'] }}</h5>
                         <a href="#" class="btn cta-button">Explorar</a>
