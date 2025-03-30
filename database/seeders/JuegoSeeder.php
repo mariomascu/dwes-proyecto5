@@ -17,7 +17,7 @@ class JuegoSeeder extends Seeder
         $juego1->nombre = 'Diablo IV';
         $juego1->desarrollador = 'Blizzard Entertainment';
         $juego1->lanzamiento = '2023-06-06';
-        $juego1->url_cover = asset('img/' . str_replace(' ', '-', 'Diablo IV') . '.webp');
+        $juego1->url_cover = '/img/Diablo-IV.webp';
         $juego1->save();
 
 
@@ -25,9 +25,8 @@ class JuegoSeeder extends Seeder
         $juego2->nombre = 'Assassins Creed - Black Flag';
         $juego2->desarrollador = 'Ubisoft';
         $juego2->lanzamiento = '2013-10-29';
-        $juego2->url_cover = asset('img/Assassins-Creed---Black-Flag.webp');
+        $juego2->url_cover = '/img/Assassins-Creed---Black-Flag.webp';
         $juego2->save();
-
 
         $juego3 = new Videojuego();
         $juego3->nombre = 'Baldurs Gate 3';

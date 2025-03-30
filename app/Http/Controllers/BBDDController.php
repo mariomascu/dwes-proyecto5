@@ -21,15 +21,36 @@ class BBDDController extends Controller
 
     public function guardar(Request $request)
     {
+        // Validar la solicitud
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'desarrollador' => 'required|string|max:255',
+            'lanzamiento' => 'required|date',
+            'url_cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Inicializar la variable $url_cover
+        $url_cover = null;
+
+        // Manejar la subida del archivo
+        if ($request->hasFile('url_cover')) {
+            $file = $request->file('url_cover');
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $filename);
+            $url_cover = 'img/' . $filename;
+        }
+
+        // Inserción del registro en la base de datos
         DB::table('videojuegos')->insert([
             'nombre' => $request->nombre,
             'desarrollador' => $request->desarrollador,
             'lanzamiento' => $request->lanzamiento,
+            'url_cover' => $url_cover,
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        // de esta forma se redirige a la ruta ver pero mostrando un mensaje de éxito
+        // Una vez que se guarda, redirijo a la ruta para ver todos los videojuegos mostrando un mensaje de éxito
         return redirect(route('ver'))->with('success', 'Videojuego añadido correctamente.');
     }
 }

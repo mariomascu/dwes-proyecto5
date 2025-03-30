@@ -1,4 +1,3 @@
-/* Importar Bootstrap (opcional si ya lo incluiste en Blade) */
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
 
 .boldonse-regular {
@@ -6,7 +5,6 @@
     font-weight: 400;
     font-style: normal;
 }
-
 
 /* Estilos personalizados */
 body {
@@ -19,7 +17,7 @@ body {
     background-color: #1f0e2e;
 }
 
-.navbar, .navbar-outer{
+.navbar, .navbar-outer {
     background-color: #110019; /* Morado oscuro */
 }
 
@@ -119,4 +117,34 @@ body {
     z-index: 2; /* Asegura que el contenido esté sobre la capa oscura */
     color: #ffffff; /* Texto blanco */
     align-content: center;
+}
+
+/* Estilos para los inputs */
+.form-group {
+    margin-bottom: 15px; /* Separación entre inputs */
+}
+
+
+.form-control, .form-control:focus, .form-control:active {
+    background-color: #110019; /* Fondo oscuro */
+    color: #ffffff; /* Letra blanca */
+    border: 1px solid #ff1493; /* Borde rosa neon */
+}
+.form-control::placeholder {
+    color: #a8a8a8; /* Color del placeholder */
+}
+
+#lanzamiento, #url_cover {
+    display: inline-block;
+    width: auto; /* Ajusta el ancho automáticamente */
+}
+
+.btn-primary {
+    background-color: #ff1493; /* Rosa neon */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #39ff14; /* Verde neon */
+    color: #1c002e;
 }

@@ -1,3 +1,10 @@
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 @extends('layouts.plantilla')
 
 @section('content')
@@ -18,7 +25,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title game-title">{{ $juego->nombre }}</h5>
                             <p class="card-text">{{ $juego->desarrollador }}</p>
-                            <p class="card-text">{{ $juego->lanzamiento }}</p>
+                            <p class="card-text">Lanzamiento: {{ $juego->lanzamiento }}</p>
                         </div>
                     </div>
                 </div>
