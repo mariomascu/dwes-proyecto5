@@ -1,4 +1,5 @@
-@include('layouts.header')
+@extends('layouts.plantilla')
+@section('content')
 
 <div class="container mt-5">
     <h1>Sobre Nosotros</h1>
@@ -8,6 +9,4 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endsection

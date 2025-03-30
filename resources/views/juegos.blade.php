@@ -1,5 +1,5 @@
-@include('layouts.header') <!--carga de la cabecera ruteada-->
-
+@extends('layouts.plantilla')
+@section('content')
 
 <div class="container mt-5">
     <h1 class="text-center page-title">Lista de Juegos</h1>
@@ -21,3 +21,4 @@
     </div>
 </div>
 
+@endsection

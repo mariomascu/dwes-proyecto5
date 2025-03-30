@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{--<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body>--}}
 
 <!-- Navbar -->
 <div class="navbar-outer">
@@ -33,6 +33,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('anadir') }}">Añadir</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('generos') }}">Géneros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('sobre-nosotros') }}">Sobre Nosotros</a>

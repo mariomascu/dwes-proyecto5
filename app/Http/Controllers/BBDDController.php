@@ -9,8 +9,8 @@ class BBDDController extends Controller
 {
     public function ver()
     {
-        $videojuegos = DB::table('videojuegos')->get();
-        return view('ver', ['videojuegos' => $videojuegos]);
+        $videojuegos = DB::table('videojuegos')->get(); //forma de consultar la base de datos. Obtengo todos los videojuegos de la tabla videojuegos y los almaceno en la variable videojuegos
+        return view('ver', ['videojuegos' => $videojuegos]); // devuelve la vista ver.blade.php a la que se le pasa un array con los videojuegos
     }
 
 
@@ -29,7 +29,8 @@ class BBDDController extends Controller
             'updated_at' => now()
         ]);
 
-        return view('/ver');
+        // de esta forma se redirige a la ruta ver pero mostrando un mensaje de éxito
+        return redirect(route('ver'))->with('success', 'Videojuego añadido correctamente.');
     }
 }
 

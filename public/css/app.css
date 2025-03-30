@@ -88,6 +88,7 @@ body {
 .game-card {
     background-color: #1c002e; /* Fondo oscuro por defecto */
     border: 1px solid #ff1493; /* Borde rosa neon */
+    object-fit: cover;
     border-radius: 10px;
     transition: all 0.3s ease;
     background-size: cover; /* Ajusta la imagen al tamaño de la tarjeta */
