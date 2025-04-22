@@ -1,0 +1,347 @@
+// Variables y configuraciones base
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
+
+// Variables de color
+$color-hover: #59f9b2;
+$color-rosa: #ff1493;
+$color-morado: #1f0e2e;
+$color-header-footer: #110019;
+
+// Fuentes
+.boldonse-regular {
+    font-family: "Boldonse", system-ui;
+    font-weight: 600;
+    font-style: normal;
+}
+
+// Estilos base
+body {
+    background: url("/img/fondo.webp") center/cover no-repeat fixed,
+        $color-morado;
+    color: #ffffff;
+}
+
+// Componentes reutilizables
+%form-container {
+    //cuando pongo % quiero decir que este snippet puede ser reutilizado en scss en otra parte del código tan sólo el selector con el % delante. Funciona como un include.
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 3rem;
+
+    h1 {
+        font-size: 30px;
+        font-weight: 400;
+        text-align: center;
+    }
+}
+
+%form-base {
+    max-width: 500px;
+    width: 100%;
+    align-self: center;
+
+    .form-group {
+        margin-bottom: 20px;
+
+        border: none;
+        tr {
+            border: none;
+            td {
+                border: none;
+            }
+        }
+
+        label {
+            color: white;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid $color-rosa;
+            color: $color-rosa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            width: 100%;
+            transition: all 0.3s ease;
+
+            &:focus {
+                //creo una sombra como reluciente cuando enfoco el campo de texto
+                border-color: $color-hover;
+                box-shadow: 0 0 0 0.25rem rgba(89, 249, 178, 0.25);
+            }
+        }
+    }
+}
+
+%btn-primary {
+    background-color: $color-rosa;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: $color-hover;
+        color: $color-morado;
+        transform: scale(1.05);
+    }
+}
+
+%btn-secondary {
+    background-color: transparent;
+    color: $color-hover;
+    border: 1px solid $color-hover;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+
+    &:hover {
+        background-color: $color-rosa;
+        color: white;
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+}
+
+// Estructura principal
+.navbar {
+    &,
+    &-outer {
+        background-color: $color-header-footer;
+    }
+
+    &-nav {
+        align-items: center;
+    }
+
+    &-brand {
+        font-family: "Andale Mono", monospace;
+        font-size: 25px;
+        font-weight: 700;
+        color: $color-rosa !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-link {
+        color: #ffffff !important;
+        font-size: 18px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $color-morado !important;
+            text-decoration: none;
+            transform: scale(1.1);
+            background-color: $color-hover;
+            cursor: pointer;
+        }
+    }
+}
+
+// Componentes específicos
+.page-title {
+    @extend .boldonse-regular;
+    font-size: 34px;
+    color: white;
+    text-align: center;
+}
+
+.game-title {
+    @extend .boldonse-regular;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+// Páginas específicas
+.container {
+    &-principal {
+        margin-top: 30vh;
+        height: 53vh;
+    }
+
+    &-anadir,
+    &-editar,
+    &-select-edit,
+    &-login,
+    &-registro {
+        @extend %form-container; // Aquí hago como un include del form-container que declaré más arriba utilizando %
+    }
+
+    &-anadir .form-anadir,
+    &-editar .form-editar,
+    &-select-edit .form-select-edit,
+    &-login .form-login,
+    &-registro .form-registro {
+        @extend %form-base;
+    }
+}
+
+// Formularios
+.form {
+    &-anadir,
+    &-editar,
+    &-select-edit,
+    &-login,
+    &-registro {
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        button[type="submit"],
+        .btn-primary-action {
+            @extend %btn-primary;
+        }
+
+        .btn-cancelar,
+        .btn-secondary-action {
+            @extend %btn-secondary;
+        }
+    }
+
+    &-select-edit select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ff1493' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px 12px;
+    }
+}
+
+// Componentes de tarjetas
+.game-card {
+    background-color: #1c002e;
+    border: 1px solid $color-rosa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        box-shadow: 0 10px 20px rgba(255, 20, 147, 0.5);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+
+    .card-body {
+        background: rgba(0, 0, 0, 0.5);
+        position: relative;
+        z-index: 2;
+        color: #ffffff;
+        align-content: center;
+        transition: all 0.3s ease-in-out;
+
+        .game-title {
+            line-height: 30px;
+        }
+
+        &:hover {
+            background: transparent;
+            cursor: pointer;
+        }
+    }
+}
+
+// Tablas
+.tabla-generos {
+    @extend .game-card;
+    border: 3px solid $color-rosa !important;
+}
+
+table,
+tr,
+td,
+tbody,
+th,
+thead {
+    border: 1px solid $color-rosa;
+}
+
+// Botones especiales
+.btn {
+    &-iniciar-sesion,
+    &-cerrar-sesion {
+        color: $color-rosa !important;
+        font-size: 18px;
+        border: 1px solid $color-rosa !important;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: $color-hover;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    }
+
+    &-registro {
+        color: $color-hover !important;
+        font-size: 18px;
+        border: 1px solid $color-hover !important;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: $color-rosa;
+            color: $color-hover !important;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    }
+}
+
+// Footer
+footer {
+    background-color: $color-header-footer;
+    margin-top: 100px;
+
+    .titulo-footer {
+        color: $color-rosa;
+    }
+
+    #contacto,
+    .enlaces-menu a,
+    .rrss a {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+            color: $color-hover !important;
+            cursor: pointer;
+        }
+    }
+}
+
+// imagen vista previa en editar
+.img-thumbnail {
+    border: 1px solid $color-rosa;
+    max-height: 200px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.invalid-feedback {
+    color: $color-hover;
+    margin-top: 5px;
+}
+
+.sobre-nosotros {
+    height: 50vh;
+}

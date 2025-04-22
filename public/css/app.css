@@ -1,150 +1,278 @@
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
-
-.boldonse-regular {
-    font-family: "Boldonse", system-ui;
-    font-weight: 400;
-    font-style: normal;
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
+.boldonse-regular, .game-title, .page-title {
+  font-family: "Boldonse", system-ui;
+  font-weight: 600;
+  font-style: normal;
 }
 
-/* Estilos personalizados */
 body {
-    background-image: url('/img/fondo.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #ffffff;
-    background-color: #1f0e2e;
+  background: url("/img/fondo.webp") center/cover no-repeat fixed, #1f0e2e;
+  color: #ffffff;
+}
+
+.container-anadir, .container-editar, .container-select-edit, .container-login, .container-registro {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 3rem;
+}
+.container-anadir h1, .container-editar h1, .container-select-edit h1, .container-login h1, .container-registro h1 {
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.container-anadir .form-anadir, .container-editar .form-editar, .container-select-edit .form-select-edit, .container-login .form-login, .container-registro .form-registro {
+  max-width: 500px;
+  width: 100%;
+  align-self: center;
+}
+.container-anadir .form-anadir .form-group, .container-editar .form-editar .form-group, .container-select-edit .form-select-edit .form-group, .container-login .form-login .form-group, .container-registro .form-registro .form-group {
+  margin-bottom: 20px;
+  border: none;
+}
+.container-anadir .form-anadir .form-group tr, .container-editar .form-editar .form-group tr, .container-select-edit .form-select-edit .form-group tr, .container-login .form-login .form-group tr, .container-registro .form-registro .form-group tr {
+  border: none;
+}
+.container-anadir .form-anadir .form-group tr td, .container-editar .form-editar .form-group tr td, .container-select-edit .form-select-edit .form-group tr td, .container-login .form-login .form-group tr td, .container-registro .form-registro .form-group tr td {
+  border: none;
+}
+.container-anadir .form-anadir .form-group label, .container-editar .form-editar .form-group label, .container-select-edit .form-select-edit .form-group label, .container-login .form-login .form-group label, .container-registro .form-registro .form-group label {
+  color: white;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 16px;
+}
+.container-anadir .form-anadir .form-group .form-control, .container-editar .form-editar .form-group .form-control, .container-select-edit .form-select-edit .form-group .form-control, .container-login .form-login .form-group .form-control, .container-registro .form-registro .form-group .form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ff1493;
+  color: #ff1493;
+  padding: 10px 15px;
+  border-radius: 5px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+.container-anadir .form-anadir .form-group .form-control:focus, .container-editar .form-editar .form-group .form-control:focus, .container-select-edit .form-select-edit .form-group .form-control:focus, .container-login .form-login .form-group .form-control:focus, .container-registro .form-registro .form-group .form-control:focus {
+  border-color: #59f9b2;
+  box-shadow: 0 0 0 0.25rem rgba(89, 249, 178, 0.25);
+}
+
+.form-anadir button[type=submit],
+.form-anadir .btn-primary-action, .form-editar button[type=submit],
+.form-editar .btn-primary-action, .form-select-edit button[type=submit],
+.form-select-edit .btn-primary-action, .form-login button[type=submit],
+.form-login .btn-primary-action, .form-registro button[type=submit],
+.form-registro .btn-primary-action {
+  background-color: #ff1493;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.form-anadir button[type=submit]:hover,
+.form-anadir .btn-primary-action:hover, .form-editar button[type=submit]:hover,
+.form-editar .btn-primary-action:hover, .form-select-edit button[type=submit]:hover,
+.form-select-edit .btn-primary-action:hover, .form-login button[type=submit]:hover,
+.form-login .btn-primary-action:hover, .form-registro button[type=submit]:hover,
+.form-registro .btn-primary-action:hover {
+  background-color: #59f9b2;
+  color: #1f0e2e;
+  transform: scale(1.05);
+}
+
+.form-anadir .btn-cancelar,
+.form-anadir .btn-secondary-action, .form-editar .btn-cancelar,
+.form-editar .btn-secondary-action, .form-select-edit .btn-cancelar,
+.form-select-edit .btn-secondary-action, .form-login .btn-cancelar,
+.form-login .btn-secondary-action, .form-registro .btn-cancelar,
+.form-registro .btn-secondary-action {
+  background-color: transparent;
+  color: #59f9b2;
+  border: 1px solid #59f9b2;
+  padding: 10px 25px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+.form-anadir .btn-cancelar:hover,
+.form-anadir .btn-secondary-action:hover, .form-editar .btn-cancelar:hover,
+.form-editar .btn-secondary-action:hover, .form-select-edit .btn-cancelar:hover,
+.form-select-edit .btn-secondary-action:hover, .form-login .btn-cancelar:hover,
+.form-login .btn-secondary-action:hover, .form-registro .btn-cancelar:hover,
+.form-registro .btn-secondary-action:hover {
+  background-color: #ff1493;
+  color: white;
+  transform: scale(1.05);
+  text-decoration: none;
 }
 
 .navbar, .navbar-outer {
-    background-color: #110019; /* Morado oscuro */
+  background-color: #110019;
 }
-
+.navbar-nav {
+  align-items: center;
+}
 .navbar-brand {
-    font-family: "Andale Mono", monospace;
-    font-size: 25px;
-    font-weight: 700;
-    color: #ff1493 !important; /* Rosa neon */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "Andale Mono", monospace;
+  font-size: 25px;
+  font-weight: 700;
+  color: #ff1493 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-.nav-link {
-    color: #ffffff !important; /* Texto blanco */
-    font-size: 18px;
-    transition: all 0.3s ease;
+.navbar .nav-link {
+  color: #ffffff !important;
+  font-size: 18px;
+  transition: all 0.3s ease;
 }
-
-.nav-link:hover {
-    color: #42e820 !important; /* Verde neon */
-    text-decoration: underline;
-    transform: scale(1.1);
-}
-
-.game-card {
-    background-color: #1c002e; /* Fondo oscuro para tarjetas */
-    border: 1px solid #ff1493; /* Borde rosa neon */
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.game-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(255, 20, 147, 0.5); /* Sombra rosa neon */
+.navbar .nav-link:hover {
+  color: #1f0e2e !important;
+  text-decoration: none;
+  transform: scale(1.1);
+  background-color: #59f9b2;
+  cursor: pointer;
 }
 
 .page-title {
-    align-content: center;
-    font-family: "Boldonse";
-    font-size: 34px;
-    color: #39ff14; /* Verde neon */
+  font-size: 34px;
+  color: white;
+  text-align: center;
 }
 
 .game-title {
-    align-content: center;
-    font-family: "Boldonse";
-    font-size: 18px;
-    color: #ffffff; /* Verde neon */
+  font-size: 18px;
+  color: #ffffff;
 }
 
-.cta-button {
-    background-color: #ff1493; /* Rosa neon */
-    border: none;
-    color: #ffffff;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+.container-principal {
+  margin-top: 30vh;
+  height: 53vh;
+}
+.form-anadir .btn-group, .form-editar .btn-group, .form-select-edit .btn-group, .form-login .btn-group, .form-registro .btn-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+.form-select-edit select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ff1493' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
 }
 
-.cta-button:hover {
-    background-color: #39ff14; /* Verde neon */
-    transform: scale(1.1);
+.game-card, .tabla-generos {
+  background-color: #1c002e;
+  border: 1px solid #ff1493;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.game-card:hover, .tabla-generos:hover {
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.5);
+}
+.game-card::before, .tabla-generos::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.game-card .card-body, .tabla-generos .card-body {
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  align-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.game-card .card-body .game-title, .tabla-generos .card-body .game-title {
+  line-height: 30px;
+}
+.game-card .card-body:hover, .tabla-generos .card-body:hover {
+  background: transparent;
+  cursor: pointer;
 }
 
-/* Estilos para las tarjetas */
-.game-card {
-    background-color: #1c002e; /* Fondo oscuro por defecto */
-    border: 1px solid #ff1493; /* Borde rosa neon */
-    object-fit: cover;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    background-size: cover; /* Ajusta la imagen al tamaño de la tarjeta */
-    background-position: center; /* Centra la imagen */
-    height: 300px; /* Altura fija para las tarjetas */
-    position: relative; /* Para posicionar elementos internos */
-    overflow: hidden; /* Evita que el contenido se desborde */
+.tabla-generos {
+  border: 3px solid #ff1493 !important;
 }
 
-.game-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(255, 20, 147, 0.5); /* Sombra rosa neon */
+table,
+tr,
+td,
+tbody,
+th,
+thead {
+  border: 1px solid #ff1493;
 }
 
-.game-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Capa oscura encima de la imagen */
-    z-index: 1;
+.btn-iniciar-sesion, .btn-cerrar-sesion {
+  color: #ff1493 !important;
+  font-size: 18px;
+  border: 1px solid #ff1493 !important;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.btn-iniciar-sesion:hover, .btn-cerrar-sesion:hover {
+  background-color: #59f9b2;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.btn-registro {
+  color: #59f9b2 !important;
+  font-size: 18px;
+  border: 1px solid #59f9b2 !important;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.btn-registro:hover {
+  background-color: #ff1493;
+  color: #59f9b2 !important;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
-.game-card .card-body {
-    position: relative;
-    z-index: 2; /* Asegura que el contenido esté sobre la capa oscura */
-    color: #ffffff; /* Texto blanco */
-    align-content: center;
+footer {
+  background-color: #110019;
+  margin-top: 100px;
+}
+footer .titulo-footer {
+  color: #ff1493;
+}
+footer #contacto,
+footer .enlaces-menu a,
+footer .rrss a {
+  text-decoration: none;
+  color: white;
+}
+footer #contacto:hover,
+footer .enlaces-menu a:hover,
+footer .rrss a:hover {
+  color: #59f9b2 !important;
+  cursor: pointer;
 }
 
-/* Estilos para los inputs */
-.form-group {
-    margin-bottom: 15px; /* Separación entre inputs */
+.img-thumbnail {
+  border: 1px solid #ff1493;
+  max-height: 200px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-
-.form-control, .form-control:focus, .form-control:active {
-    background-color: #110019; /* Fondo oscuro */
-    color: #ffffff; /* Letra blanca */
-    border: 1px solid #ff1493; /* Borde rosa neon */
-}
-.form-control::placeholder {
-    color: #a8a8a8; /* Color del placeholder */
+.invalid-feedback {
+  color: #59f9b2;
+  margin-top: 5px;
 }
 
-#lanzamiento, #url_cover {
-    display: inline-block;
-    width: auto; /* Ajusta el ancho automáticamente */
-}
-
-.btn-primary {
-    background-color: #ff1493; /* Rosa neon */
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #39ff14; /* Verde neon */
-    color: #1c002e;
-}
+.sobre-nosotros {
+  height: 50vh;
+}/*# sourceMappingURL=app.css.map */
