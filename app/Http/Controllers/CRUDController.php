@@ -17,7 +17,7 @@ class CRUDController extends Controller
         return view('select-edit', compact('videojuegos'));
     }
 
-    // Procesar selección para editar (POST)
+  
     public function processSelectForEdit(Request $request)
     {
         $request->validate([
@@ -27,14 +27,13 @@ class CRUDController extends Controller
         return redirect()->route('editar.form', ['id' => $request->id]);
     }
 
-    // Mostrar formulario de edición (GET)
-    public function edit($id)
+       public function edit($id)
     {
-        $videojuego = Videojuego::findOrFail($id);
-        return view('editar', compact('videojuego'));
+        $videojuego = Videojuego::with('generos')->findOrFail($id);
+        $generos = Genero::all();
+        return view('editar', compact('videojuego', 'generos'));
     }
 
-    // Actualizar el videojuego (PUT/PATCH)
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -46,6 +45,14 @@ class CRUDController extends Controller
 
         $videojuego = Videojuego::findOrFail($id);
         $videojuego->update($validated);
+
+        // Aquí actualizo los géneros del videojuego
+        if ($request->has('generos')) {
+            $generosSeleccionados = Genero::whereIn('nombre', $request->generos)->pluck('id');
+            $videojuego->generos()->sync($generosSeleccionados);
+        } else {
+            $videojuego->generos()->detach(); // Si no seleccionan ningún género, se eliminan todos
+        }
 
         return redirect()->route('ver')->with('success', 'Videojuego actualizado correctamente');
     }
