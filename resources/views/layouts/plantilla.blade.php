@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OverGamer - Tu Mundo de Videojuegos</title>
+    <title>OverGame - Tu Mundo de Videojuegos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -18,6 +18,14 @@
     {{--header--}}
     @include('layouts.header') <!--carga de la cabecera ruteada-->
 
+    {{-- Alerta de éxito --}}
+    @if (session('success'))
+        <div class="alert alert-success fade show position-fixed bottom-0 end-0 mb-4 me-4" role="alert" aria-live="assertive" aria-atomic="true" style="max-width: 400px; z-index: 9999;">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     {{--contenido--}}
     @yield('content')
 
@@ -26,6 +34,7 @@
 
     {{--script--}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
 
 </body>
 </html>

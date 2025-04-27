@@ -4,9 +4,9 @@
         <div class="row">
             <!-- Columna de Información de Contacto -->
             <div class="col-md-4">
-                <h5 class="mb-3 titulo-footer">Sobre nosotros</h5>
+                <h5 class="mb-3 titulo-footer titulo-overgame">OVERGAME</h5>
                 <p>
-                    OverGamer es tu mundo de videojuegos donde podrás encontrar todo lo que necesitas para disfrutar al máximo.
+                    OverGame es tu mundo de videojuegos donde podrás encontrar todo lo que necesitas para disfrutar al máximo.
                 </p>
                 <p>
                     <strong>Dirección:</strong> Av. Arroyo del Moro, S/N. Córdoba
@@ -16,17 +16,28 @@
                 </p>
             </div>
 
-            <!-- Columna de Enlaces -->
+            <!-- Columna de Enlaces (dividida en 2 columnas internas) -->
             <div class="col-md-4 enlaces-menu">
                 <h5 class="mb-3 titulo-footer">Enlaces rápidos</h5>
-                <ul class="list-unstyled">
-                    <li><a href="{{ route('inicio') }}" class="text-white">Inicio</a></li>
-                    <li><a href="{{ route('ver') }}" class="text-white">Ver</a></li>
-                    <li><a href="{{ route('anadir') }}" class="text-white">Añadir</a></li>
-                    <li><a href="{{ route('anadir') }}" class="text-white">Editar</a></li>
-                    <li><a href="{{ route('generos') }}" class="text-white">Géneros</a></li>
-                    <li><a href="{{ route('sobre-nosotros') }}" class="text-white">Sobre Nosotros</a></li>
-                </ul>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><a href="{{ route('inicio') }}" class="text-white">Inicio</a></li>
+                            <li><a href="{{ route('ver') }}" class="text-white">Ver</a></li>
+                            <li><a href="{{ route('anadir') }}" class="text-white">Añadir</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><a href="{{ route('anadir') }}" class="text-white">Editar</a></li>
+                            @if (Auth::user() && Auth::user()->rol === 'administrador') <!-- Solo si es admin -->
+                                <li><a href="{{ route('borrar.select') }}" class="text-white">Borrar</a></li>
+                            @endif
+                            <li><a href="{{ route('generos') }}" class="text-white">Géneros</a></li>
+                            <li><a href="{{ route('sobre-nosotros') }}" class="text-white">Sobre Nosotros</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- Columna de Redes Sociales -->
@@ -37,7 +48,7 @@
                 <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i> </a>
             </div>
         </div>
-        
+
         <!-- Línea separadora -->
         <hr class="border-light">
 
@@ -48,5 +59,3 @@
         </div>
     </div>
 </footer>
-
-

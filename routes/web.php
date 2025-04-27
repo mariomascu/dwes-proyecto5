@@ -43,9 +43,8 @@ Route::controller(CRUDController::class)->group(function () {
     Route::match(['put', 'patch'], '/editar/{id}', 'update')->name('editar.update');
     
     // Rutas para borrado
-    Route::get('/borrar', 'selectForDelete')->name('borrar.select');
-    Route::post('/procesar-borrado', 'processSelectForDelete')->name('borrar.process');
-    Route::delete('/borrar/{id}', 'destroy')->name('borrar.destroy');
+    Route::get('/borrar', 'selectForDelete')->name('borrar.select');    
+    Route::delete('/borrar', 'destroy')->name('borrar.destroy');
 });
 
 // Rutas de autenticación (manteniendo el grupo Auth pero con registro modificado)
@@ -58,4 +57,4 @@ Route::prefix('auth')->group(function () {
 });
 
 // Ruta home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');

@@ -15,6 +15,7 @@ $color-header-footer: #110019;
 }
 
 // Estilos base
+
 body {
     background: url("/img/fondo.webp") center/cover no-repeat fixed,
         $color-morado;
@@ -37,7 +38,7 @@ body {
 }
 
 %form-base {
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
     align-self: center;
 
@@ -78,16 +79,20 @@ body {
 }
 
 %btn-primary {
-    background-color: $color-rosa;
-    color: white;
-    border: none;
-    padding: 10px 25px;
+    background-color: transparent;
+    color: $color-rosa;
+    border: 1px solid $color-rosa;
+    padding: 0 25px;
+    height: 45px;
+    line-height: 45px;
     border-radius: 5px;
     transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
 
     &:hover {
-        background-color: $color-hover;
-        color: $color-morado;
+        background-color: $color-rosa;
+        color: white;
         transform: scale(1.05);
     }
 }
@@ -96,20 +101,24 @@ body {
     background-color: transparent;
     color: $color-hover;
     border: 1px solid $color-hover;
-    padding: 10px 25px;
+    padding: 0 25px;
+    height: 45px;
+    line-height: 45px;
     border-radius: 5px;
     transition: all 0.3s ease;
     text-align: center;
+    white-space: nowrap;
 
     &:hover {
-        background-color: $color-rosa;
-        color: white;
+        background-color: $color-hover;
+        color: $color-morado;
         transform: scale(1.05);
         text-decoration: none;
     }
 }
 
 // Estructura principal
+
 .navbar {
     &,
     &-outer {
@@ -169,6 +178,7 @@ body {
     &-select-edit,
     &-login,
     &-registro {
+        margin-bottom: calc(100vh - 53%);
         @extend %form-container; // Aquí hago como un include del form-container que declaré más arriba utilizando %
     }
 
@@ -195,6 +205,8 @@ body {
         }
 
         button[type="submit"],
+        .btn-seleccionar,
+        .btn-borrar,
         .btn-primary-action {
             @extend %btn-primary;
         }
@@ -260,10 +272,23 @@ body {
     }
 }
 
-// Tablas
+// Tablas de la vista géneros
 .tabla-generos {
     @extend .game-card;
-    border: 3px solid $color-rosa !important;
+    border: 2px solid $color-rosa !important;
+    background-color: rgba(0,0,0,0.3) !important; //COLOR MORADO OSCURO SEMITRASNPARENTE !important; 
+    color: white;
+
+    thead, tbody, tr, th, td {
+        background-color: transparent !important;
+        color: white;
+        border: 1px solid $color-rosa; 
+    }
+
+    thead{
+        background-color: $color-rosa !important;
+        color: white;
+    }
 }
 
 table,
@@ -275,8 +300,10 @@ thead {
     border: 1px solid $color-rosa;
 }
 
+
 // Botones especiales
 .btn {
+    &-borrar,
     &-iniciar-sesion,
     &-cerrar-sesion {
         color: $color-rosa !important;
@@ -286,7 +313,8 @@ thead {
         transition: all 0.3s ease;
 
         &:hover {
-            background-color: $color-hover;
+            background-color: $color-rosa;
+            color: white !important;
             transform: scale(1.1);
             cursor: pointer;
         }
@@ -300,8 +328,8 @@ thead {
         transition: all 0.3s ease;
 
         &:hover {
-            background-color: $color-rosa;
-            color: $color-hover !important;
+            background-color: $color-hover;
+            color: $color-morado !important;
             transform: scale(1.1);
             cursor: pointer;
         }
@@ -315,6 +343,12 @@ footer {
 
     .titulo-footer {
         color: $color-rosa;
+    }
+
+    .titulo-overgame {
+        font-family: "Boldonse", system-ui;
+        color: $color-rosa;
+        font-size: 16px;
     }
 
     #contacto,

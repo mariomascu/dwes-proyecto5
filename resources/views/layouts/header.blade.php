@@ -16,7 +16,10 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('anadir') }}">Añadir</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('editar.select') }}">Editar</a></li>
                         
-                        <li class="nav-item"><a class="nav-link" href="{{ route('borrar.select') }}">Borrar</a></li>
+                        @if (Auth::user() && Auth::user()->rol === 'administrador') <!--muestra el menú de borrar solo si el usuario es administrador-->
+                            <li class="nav-item"><a class="nav-link" href="{{ route('borrar.select') }}">Borrar</a></li>
+                        @endif
+
                         <li class="nav-item"><a class="nav-link" href="{{ route('generos') }}">Géneros</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('sobre-nosotros') }}">Sobre Nosotros</a></li>                        
                         
@@ -34,7 +37,7 @@
                                     @csrf
                                 </form>
                             </li>
-                            <li><span>Hola, {{ Auth::user()->name }}</span></li>
+                            <li><span>Hola, {{ explode(' ', Auth::user()->name)[0] }}</span></li>
                         @endguest   
 
                     </ul>

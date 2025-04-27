@@ -23,7 +23,7 @@ body {
 }
 
 .container-anadir .form-anadir, .container-editar .form-editar, .container-select-edit .form-select-edit, .container-login .form-login, .container-registro .form-registro {
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   align-self: center;
 }
@@ -58,26 +58,50 @@ body {
 }
 
 .form-anadir button[type=submit],
+.form-anadir .btn-seleccionar,
+.form-anadir .btn-borrar,
 .form-anadir .btn-primary-action, .form-editar button[type=submit],
+.form-editar .btn-seleccionar,
+.form-editar .btn-borrar,
 .form-editar .btn-primary-action, .form-select-edit button[type=submit],
+.form-select-edit .btn-seleccionar,
+.form-select-edit .btn-borrar,
 .form-select-edit .btn-primary-action, .form-login button[type=submit],
+.form-login .btn-seleccionar,
+.form-login .btn-borrar,
 .form-login .btn-primary-action, .form-registro button[type=submit],
+.form-registro .btn-seleccionar,
+.form-registro .btn-borrar,
 .form-registro .btn-primary-action {
-  background-color: #ff1493;
-  color: white;
-  border: none;
-  padding: 10px 25px;
+  background-color: transparent;
+  color: #ff1493;
+  border: 1px solid #ff1493;
+  padding: 0 25px;
+  height: 45px;
+  line-height: 45px;
   border-radius: 5px;
   transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
 }
 .form-anadir button[type=submit]:hover,
+.form-anadir .btn-seleccionar:hover,
+.form-anadir .btn-borrar:hover,
 .form-anadir .btn-primary-action:hover, .form-editar button[type=submit]:hover,
+.form-editar .btn-seleccionar:hover,
+.form-editar .btn-borrar:hover,
 .form-editar .btn-primary-action:hover, .form-select-edit button[type=submit]:hover,
+.form-select-edit .btn-seleccionar:hover,
+.form-select-edit .btn-borrar:hover,
 .form-select-edit .btn-primary-action:hover, .form-login button[type=submit]:hover,
+.form-login .btn-seleccionar:hover,
+.form-login .btn-borrar:hover,
 .form-login .btn-primary-action:hover, .form-registro button[type=submit]:hover,
+.form-registro .btn-seleccionar:hover,
+.form-registro .btn-borrar:hover,
 .form-registro .btn-primary-action:hover {
-  background-color: #59f9b2;
-  color: #1f0e2e;
+  background-color: #ff1493;
+  color: white;
   transform: scale(1.05);
 }
 
@@ -90,10 +114,13 @@ body {
   background-color: transparent;
   color: #59f9b2;
   border: 1px solid #59f9b2;
-  padding: 10px 25px;
+  padding: 0 25px;
+  height: 45px;
+  line-height: 45px;
   border-radius: 5px;
   transition: all 0.3s ease;
   text-align: center;
+  white-space: nowrap;
 }
 .form-anadir .btn-cancelar:hover,
 .form-anadir .btn-secondary-action:hover, .form-editar .btn-cancelar:hover,
@@ -101,8 +128,8 @@ body {
 .form-select-edit .btn-secondary-action:hover, .form-login .btn-cancelar:hover,
 .form-login .btn-secondary-action:hover, .form-registro .btn-cancelar:hover,
 .form-registro .btn-secondary-action:hover {
-  background-color: #ff1493;
-  color: white;
+  background-color: #59f9b2;
+  color: #1f0e2e;
   transform: scale(1.05);
   text-decoration: none;
 }
@@ -147,6 +174,9 @@ body {
 .container-principal {
   margin-top: 30vh;
   height: 53vh;
+}
+.container-anadir, .container-editar, .container-select-edit, .container-login, .container-registro {
+  margin-bottom: calc(100vh - 53%);
 }
 .form-anadir .btn-group, .form-editar .btn-group, .form-select-edit .btn-group, .form-login .btn-group, .form-registro .btn-group {
   display: flex;
@@ -204,7 +234,18 @@ body {
 }
 
 .tabla-generos {
-  border: 3px solid #ff1493 !important;
+  border: 2px solid #ff1493 !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  color: white;
+}
+.tabla-generos thead, .tabla-generos tbody, .tabla-generos tr, .tabla-generos th, .tabla-generos td {
+  background-color: transparent !important;
+  color: white;
+  border: 1px solid #ff1493;
+}
+.tabla-generos thead {
+  background-color: #ff1493 !important;
+  color: white;
 }
 
 table,
@@ -216,15 +257,16 @@ thead {
   border: 1px solid #ff1493;
 }
 
-.btn-iniciar-sesion, .btn-cerrar-sesion {
+.btn-borrar, .btn-iniciar-sesion, .btn-cerrar-sesion {
   color: #ff1493 !important;
   font-size: 18px;
   border: 1px solid #ff1493 !important;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
-.btn-iniciar-sesion:hover, .btn-cerrar-sesion:hover {
-  background-color: #59f9b2;
+.btn-borrar:hover, .btn-iniciar-sesion:hover, .btn-cerrar-sesion:hover {
+  background-color: #ff1493;
+  color: white !important;
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -236,8 +278,8 @@ thead {
   transition: all 0.3s ease;
 }
 .btn-registro:hover {
-  background-color: #ff1493;
-  color: #59f9b2 !important;
+  background-color: #59f9b2;
+  color: #1f0e2e !important;
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -248,6 +290,11 @@ footer {
 }
 footer .titulo-footer {
   color: #ff1493;
+}
+footer .titulo-overgame {
+  font-family: "Boldonse", system-ui;
+  color: #ff1493;
+  font-size: 16px;
 }
 footer #contacto,
 footer .enlaces-menu a,

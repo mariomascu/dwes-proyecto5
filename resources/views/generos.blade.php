@@ -9,8 +9,8 @@
         <table class="table tabla-generos mb-5">
             <thead>
                 <tr>
-                    <th>Género</th>
-                    <th>Videojuegos</th>
+                    <th>GÉNERO</th>
+                    <th>VIDEOJUEGOS</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +34,8 @@
         <table class="table tabla-generos mb-5">
             <thead>
                 <tr>
-                    <th>Videojuego</th>
-                    <th>Géneros</th>
+                    <th>VIDEOJUEGOS</th>
+                    <th>GÉNERO</th>
                 </tr>
             </thead>
             <tbody>

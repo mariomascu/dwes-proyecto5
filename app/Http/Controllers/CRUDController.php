@@ -39,12 +39,13 @@ class CRUDController extends Controller
         $validated = $request->validate([
             'nombre' => 'required|string|max:100',
             'desarrollador' => 'required|string|max:50',
-            'lanzamiento' => 'required|integer|digits:4|max:'.date('Y'),
+            'lanzamiento' => 'required|integer|digits:4|max:2025'.date('Y'),
             'url_cover' => 'nullable|url'
         ]);
 
         $videojuego = Videojuego::findOrFail($id);
         $videojuego->update($validated);
+        $nombre = $videojuego->nombre;
 
         // Aquí actualizo los géneros del videojuego
         if ($request->has('generos')) {
@@ -54,36 +55,43 @@ class CRUDController extends Controller
             $videojuego->generos()->detach(); // Si no seleccionan ningún género, se eliminan todos
         }
 
-        return redirect()->route('ver')->with('success', 'Videojuego actualizado correctamente');
+        return redirect()->route('ver')->with('success', "El videojuego '$nombre' ha sido actualizado correctamente");
     }
 
     // Seleccionar juego para borrar
     public function selectForDelete()
     {
         if (!Auth::check()) {
-            return redirect()->route('acceso-denegado')->with('message', 'Debe iniciar sesión');
+            return redirect()->route('login')->with('error', 'Debe iniciar sesión');
         }
 
         if (Auth::user()->rol !== 'administrador') {
-            return redirect()->route('acceso-denegado')->with('message', 'No tiene permisos de administrador');
+            return redirect()->route('inicio')->with('error', 'No tiene permisos de administrador');
         }
 
         $videojuegos = Videojuego::all();
         return view('select-delete', compact('videojuegos'));
     }
 
-    // Borrar juego
-    public function destroy($id)
+    // Procesar borrado
+    public function destroy(Request $request)
     {
-        if (!Auth::check() || Auth::user()->rol !== 'administrador') {
-            $message = !Auth::check() ? 'Debe iniciar sesión' : 'No tiene permisos de administrador'; // muestro el mensaje con un ternario
-            return redirect()->route('acceso-denegado')->with('message', $message);
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Debe iniciar sesión');
+        }
+    
+        if (Auth::user()->rol !== 'administrador') {
+             return redirect()->route('login')->with('error', 'No tiene permisos');
         }
 
-        $videojuego = Videojuego::findOrFail($id);
+        $request->validate([
+            'id' => 'required|exists:videojuegos,id'
+        ]);
+
+        $videojuego = Videojuego::findOrFail($request->id);
         $nombre = $videojuego->nombre;
         $videojuego->delete();
 
-        return view('confirmacion-borrado', ['nombre' => $nombre]);
+        return redirect()->route('ver')->with('success', "El videojuego '$nombre' ha sido borrado correctamente");
     }
 }

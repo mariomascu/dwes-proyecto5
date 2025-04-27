@@ -27,7 +27,7 @@ class BBDDController extends Controller
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'desarrollador' => 'required|string|max:255',
-            'lanzamiento' => 'required|integer|min:1950|max:'.date('Y'),
+            'lanzamiento' => 'required|integer|min:1980|max:2025'.date('Y'),
             'url_cover' => 'nullable|url',
             'generos' => 'required|array|min:1',
             'generos.*' => 'string'
@@ -47,7 +47,7 @@ class BBDDController extends Controller
             $videojuego->generos()->attach($genero->id);
         }
 
-        return redirect(route('ver'))->with('success', 'Videojuego añadido correctamente.');
+        return redirect(route('ver'))->with('success', 'Videojuego añadido correctamente a la base de datos.');
     }
 }
 
