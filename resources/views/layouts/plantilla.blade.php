@@ -21,8 +21,8 @@
     {{-- Alerta de éxito --}}
     @if (session('success'))
         <div class="alert alert-success fade show position-fixed bottom-0 end-0 mb-4 me-4" role="alert" aria-live="assertive" aria-atomic="true" style="max-width: 400px; z-index: 9999;">
+            <button type="button" class="btn-close position-absolute top-0 end-0" data-bs-dismiss="alert" aria-label="Close"></button>
             {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
